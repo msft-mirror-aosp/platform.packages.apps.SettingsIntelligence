@@ -62,9 +62,7 @@ public class SiteMapManager {
             Log.w(TAG, "SiteMap is not initialized yet, skipping");
             return breadcrumbs;
         }
-        if (!TextUtils.isEmpty(screenTitle)) {
-            breadcrumbs.add(screenTitle);
-        }
+        breadcrumbs.add(screenTitle);
         String currentClass = clazz;
         String currentTitle = screenTitle;
         // Look up current page's parent, if found add it to breadcrumb string list, and repeat.
@@ -76,10 +74,7 @@ public class SiteMapManager {
                 }
                 return breadcrumbs;
             }
-            final String parentTitle = pair.getParentTitle();
-            if (!TextUtils.isEmpty(parentTitle)) {
-                breadcrumbs.add(0, parentTitle);
-            }
+            breadcrumbs.add(0, pair.getParentTitle());
             currentClass = pair.getParentClass();
             currentTitle = pair.getParentTitle();
         }
